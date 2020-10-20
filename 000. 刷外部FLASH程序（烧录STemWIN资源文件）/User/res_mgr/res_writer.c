@@ -38,6 +38,7 @@ uint8_t Is_Ignore(char *check_name, char *ignore_file)
   char *ignore_file_dir;
   char *dir_ptr ;
   char *full_path;
+  char *ignore_temp;
   
   result = f_open(&file_temp, ignore_file, FA_OPEN_EXISTING | FA_READ);
   
@@ -70,11 +71,11 @@ uint8_t Is_Ignore(char *check_name, char *ignore_file)
     if(line_temp[0] == '#')
       continue;
     
-    /* 替换掉回车 */
-    line_temp[strlen(line_temp)-1] = '\0';
+    /* 去掉结尾的回车换行符 */
+    ignore_temp = strtok(line_temp, "\r\n");
     
     /* 拼接出完整的忽略文件路径 */
-    sprintf(full_path, "%s/%s",ignore_file_dir,line_temp);
+    sprintf(full_path, "%s/%s",ignore_file_dir, ignore_temp);
   
 //    BURN_DEBUG("full_path=%s,\r\ncheck_name=%s\r\n",
 //                full_path,
