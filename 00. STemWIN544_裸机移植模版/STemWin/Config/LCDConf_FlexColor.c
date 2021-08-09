@@ -177,11 +177,11 @@ void LCD_X_Config(void) {
   //  printf("LCD ID:  %04X  %04X \r\n", ILI9341_ReadID(), lcdid); //Debug
   if(lcdid == LCDID_ILI9341)
   {
-    pDevice = GUI_DEVICE_CreateAndLink(GUIDRV_FLEXCOLOR, GUICC_M565, 0, 0);
+    pDevice = GUI_DEVICE_CreateAndLink(GUIDRV_FLEXCOLOR, GUICC_565, 0, 0);
   }
   else if(lcdid == LCDID_ST7789V)
   {
-    pDevice = GUI_DEVICE_CreateAndLink(GUIDRV_FLEXCOLOR, GUICC_565, 0, 0);
+    pDevice = GUI_DEVICE_CreateAndLink(GUIDRV_FLEXCOLOR, GUICC_M565, 0, 0);
   }
   else  //ƒ¨»œ…Ë÷√
   {
